@@ -1,0 +1,12 @@
+{
+  "category": {
+    "home": "作品集首页",
+    "projects": "成果展示",
+    "about": "关于我"
+  },
+  "meta": {
+    "title": "个人作品集 <small>高逸扬</small>",
+    "copyright": "高逸扬 版权所有",
+    "loading": "加载中"
+  }
+}

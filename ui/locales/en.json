@@ -1,0 +1,12 @@
+{
+  "category": {
+    "home": "Portfolio",
+    "projects": "Projects",
+    "about": "About Me"
+  },
+  "meta": {
+    "title": "Portfolio <small>Galvin Gao</small>",
+    "copyright": "Galvin Gao. All Rights Reserved.",
+    "loading": "Loading"
+  }
+}
