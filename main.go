@@ -29,6 +29,7 @@ type Project struct {
 func main() {
 	address := flag.String("port", ":3050", "specify the listening address of the application")
 	dist := flag.String("dist", "ui/dist", "specify the dist directory of the application")
+	sqlConfig := flag.String("sql", "portfolio:portfolio@tcp(10.6.6.66)/portfolio?charset=utf8&parseTime=True&loc=Local", "specify the sql uri of the application")
 	flag.Parse()
 
 	e := echo.New()
@@ -46,7 +47,7 @@ func main() {
 
 
 	// Database
-	db, err := gorm.Open("mysql", "portfolio:portfolio@tcp(10.6.6.66)/portfolio?charset=utf8&parseTime=True&loc=Local")
+	db, err := gorm.Open("mysql", *sqlConfig)
 	if err != nil {
 		panic(err)
 	}
@@ -88,19 +89,6 @@ func main() {
 	})
 
 	e.File("*", *dist + "/index.html")
-
-
-	//e.POST("/admin/projects", func(c echo.Context) error {
-	//	project := &Project {
-	//		Permalink: "9th-grade-anniversary",
-	//		Name: "9th Grade Anniversary",
-	//		Type: "Video",
-	//		Thumbnail: "https://065-secure-cdn.qn.iblueg.cn/assets-cdn/videobanner.png",
-	//		Media: "https://065-secure-cdn.qn.iblueg.cn/assets-cdn/test.mp4",
-	//		Description: "A LOT of efforts.",
-	//	}
-	//	return db.Create(&project).Error
-	//})
 
 	// Start server
 	e.Logger.Fatal(e.Start(*address))
