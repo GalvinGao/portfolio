@@ -38,8 +38,8 @@ export default {
       dialog: true,
       playerOptions: {
         aspectRatio: '16:9',
-        autoplay: false,
-        muted: true,
+        autoplay: true,
+        muted: false,
         language: this.$i18n.locale,
         playbackRates: [0.7, 1.0, 1.5, 2.0],
         preload: 'auto',
