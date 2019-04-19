@@ -30,6 +30,7 @@ func main() {
 	address := flag.String("port", ":3050", "specify the listening address of the application")
 	dist := flag.String("dist", "ui/dist", "specify the dist directory of the application")
 	sqlConfig := flag.String("sql", "portfolio:portfolio@tcp(10.6.6.66)/portfolio?charset=utf8&parseTime=True&loc=Local", "specify the sql uri of the application")
+	cors := flag.String("cors", "https://portfolio.galvingao.com", "specify the cors secured domain of the application")
 	flag.Parse()
 
 	e := echo.New()
@@ -38,7 +39,7 @@ func main() {
 	e.Use(middleware.Logger())
 	e.Use(middleware.Recover())
 	e.Use(middleware.CORSWithConfig(middleware.CORSConfig{
-		AllowOrigins: []string{"http://localhost:3000", "https://example.com"},
+		AllowOrigins: []string{"http://localhost:3000", *cors},
 		AllowMethods: []string{http.MethodGet},
 	}))
 	e.Use(middleware.GzipWithConfig(middleware.GzipConfig{
